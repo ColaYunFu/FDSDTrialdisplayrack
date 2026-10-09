@@ -1,34 +1,17 @@
 # GitHub Pages 部署说明
 
-本项目是纯静态网页，入口文件是仓库根目录的 `index.html`，不需要构建步骤。
+本项目是纯静态网页。入口文件为仓库根目录的 `index.html`，无需构建步骤。
 
-## 发布前先确认账户计划
+1. 打开 GitHub 仓库的 **Settings → Pages**。
+2. 在 **Build and deployment** 中将 Source 设为 **Deploy from a branch**。
+3. Branch 选择 `main`，目录选择 `/(root)`，点击 **Save**。
+4. 等待部署完成后，在 Pages 设置页点击 **Visit site**。实际网站地址以 GitHub 页面显示为准。
 
-GitHub Pages 在 GitHub Free 个人账户下仅支持公开仓库；GitHub Pro、Team 和 Enterprise 计划可从私有仓库发布。请不要为了试用而自动更改仓库可见性。官方说明：
-https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+## 安全与数据说明
 
-## 启用 Pages
-
-1. 打开仓库 `ColaYunFu/Storage-room`。
-2. 进入 **Settings → Pages**。
-3. 在 **Build and deployment** 里，将 Source 选为 **Deploy from a branch**。
-4. Branch 选择 `main`，目录选择 `/(root)`，点击 **Save**。
-5. 等待发布完成后，在 Pages 页面点击 **Visit site**。项目网址通常形如 `https://colayunfu.github.io/Storage-room/`，以设置页给出的链接为准。
-
-如果在 Settings → Pages 中无法从私有仓库发布，先停在这里，不需要更改仓库状态；可选择升级支持私有 Pages 的计划，或由仓库所有者自行决定是否公开仓库。
-
-## 数据与隐私
-
-工作台默认把任务、便签和每日目标保存在访问者当前浏览器的 `localStorage`，不会自动同步到其他设备。请定期使用页面里的 JSON 导出功能备份数据。
-
-网页代码与浏览器里的任务数据是分开的；但公开发布后，网页本身可被所有人访问。不要把密码、访问令牌或其他敏感信息放入网页代码或仓库。
-
-## 本地预览
-
-直接用现代浏览器打开 `index.html`，或在项目目录运行：
-
-```bash
-python -m http.server 8080
-```
-
-然后访问 `http://localhost:8080`。
+- 仓库公开时，网页源代码对所有人可见；不要在源码中放密码或私人信息。
+- 本地用户、项目、提醒事项和设置保存在访问者浏览器的 IndexedDB 中，不会上传到服务器。
+- 用户 PIN 是 4 位数字，主要用于日常本地访问控制，安全强度有限。
+- 导出的数据备份为 AES-GCM 加密文件，使用导出账户的 PIN 解密；跨浏览器导入正确 PIN 后会创建新本地用户。
+- 更换浏览器/设备、清理网站数据或使用无痕窗口时，本地数据不会自动带过去。请定期下载加密备份，并妥善保存 PIN。
+- 自动快照存储在本机浏览器；浏览器关闭时不会在后台执行定时任务。
