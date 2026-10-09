@@ -65,7 +65,7 @@ const DB_NAME='fudong_store_workbench_v1';
 const DB_VERSION=3;
 const ACTIVE_USER_KEY='fudong-store-active-user-v1';
 const $=id=>document.getElementById(id);
-const state={db:null,users:[],activeUser:null,lockedUser:null,activePin:null,projects:[],templates:[],records:[],reminders:[],settings:null,backups:[],view:'home',toastTimer:null,editingProjectId:null,editingReminderId:null,backupTimer:null,backupBusy:false,selectedProjectId:null,reminderFilter:'active',calendarCursor:new Date(new Date().getFullYear(),new Date().getMonth(),1),selectedDate:localDate(),idleTimer:null,pinAttempts:0,pinBlockedUntil:0,pendingImportFile:null,activityBound:false,currentTheme:'mint'};
+const state={db:null,users:[],activeUser:null,lockedUser:null,activePin:null,projects:[],templates:[],records:[],reminders:[],settings:null,backups:[],view:'home',toastTimer:null,editingProjectId:null,editingReminderId:null,backupTimer:null,backupBusy:false,selectedProjectId:null,reminderFilter:'active',calendarCursor:new Date(new Date().getFullYear(),new Date().getMonth(),1),selectedDate:localDate(),idleTimer:null,pinAttempts:0,pinBlockedUntil:0,pendingImportFile:null,pendingLegacyImportPayload:null,activityBound:false,currentTheme:'mint'};
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid=prefix=>`${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,10)}`;
 const THEME_KEY='fudong-store-theme-v1';
